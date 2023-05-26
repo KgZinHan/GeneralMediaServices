@@ -1,0 +1,52 @@
+﻿@model GeneralMediaServices.Models.User
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+<div class="col-12">
+    <div id="messageBox" class="alert alert-danger @((ViewBag.AlertMessage != null) ? "" : "d-none")" role="alert">
+        @ViewBag.AlertMessage
+    </div>
+</div>
+
+<div class="container">
+    <div class="card-header bg-dark">
+        <h3 class="card-title "><i class="nav-icon fas fa-user"></i>&emsp;Edit User Info</h3>
+    </div>
+    <form asp-action="Index" class="form-horizontal">
+        <div class="card-body">
+            <div class="form-group row">
+                <label asp-for="Username" class="col-sm-2 col-form-label">Username</label>
+                <div class="col-sm-10">
+                    <input asp-for="Username" type="text" class="form-control" id="inputServer" placeholder="Username" readonly> 
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="UserPassword" class="col-sm-2 col-form-label">Old Password</label>
+                <div class="col-sm-10">
+                    <input asp-for="UserPassword" type="password" class="form-control" id="inputDatabase" placeholder="Enter Old Password">
+                    <span asp-validation-for="UserPassword" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="NewPassword" class="col-sm-2 col-form-label">New Password</label>
+                <div class="col-sm-10">
+                    <input asp-for="NewPassword" type="password" class="form-control" id="inputDatabase" placeholder="Enter New Password">
+                    <span asp-validation-for="NewPassword" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="RetypeNewPassword" class="col-sm-2 col-form-label">Retype New Password</label>
+                <div class="col-sm-10">
+                    <input asp-for="RetypeNewPassword" type="password" class="form-control" id="inputDatabase" placeholder="Retype New Password">
+                    <span asp-validation-for="RetypeNewPassword" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-dark">Connect</button>
+        </div>
+    </form>
+</div>
+

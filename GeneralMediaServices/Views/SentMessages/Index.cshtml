@@ -1,0 +1,97 @@
+﻿@model IEnumerable<GeneralMediaServices.Models.MediaService>
+
+@{
+    ViewData["Title"] = "Sent Messages List";
+}
+<style>
+    th, td {
+        overflow: hidden;
+        white-space: nowrap;
+    }
+</style>
+<div class="col-12">
+    <div id="messageBox" class="alert alert-danger @((ViewBag.AlertMessage != null) ? "" : "d-none")" role="alert">
+        @ViewBag.AlertMessage
+    </div>
+</div>
+<div class="col-12">
+    <div class="card">
+        <div class="card-header bg-dark">
+            <h5><i class="nav-icon fas fa-comment"></i>&emsp;Sent Messages</h5>
+        </div>
+        <div style="overflow: auto;max-width: 100%">
+            <table id="reportedDataTable" class="table table-striped table-bordered" >
+                <thead class="text-md-center">
+                    <tr class="bg-dark" style="font-size: 14px">
+                        <th style="width: 10px">
+                            @Html.DisplayNameFor(model => model.NumberCount)
+                        </th>
+                        <th style="width: 150px">
+                            @Html.DisplayNameFor(model => model.Msg_received_dt)
+                        </th> 
+                        <th style="width: 100px">
+                            @Html.DisplayNameFor(model => model.Sys_nme)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Msg_desc)
+                        </th>
+                        <th style="width: 100px">
+                            @Html.DisplayNameFor(model => model.Api_url)
+                        </th>
+                        <th style="width: 100px">
+                            @Html.DisplayNameFor(model => model.Sms_no)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="text-md-center">
+                    @foreach (var item in Model)
+                    {
+                        <tr style="font-size: 14px">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumberCount)
+                            </td>
+                            <td style="text-align: left">
+                                @Html.DisplayFor(modelItem => item.Msg_received_dt)
+                            </td>
+                            <td style="text-align: left">
+                                @Html.DisplayFor(modelItem => item.Sys_nme)
+                            </td>
+                            <td style="text-align: left">
+                                @Html.DisplayFor(modelItem => item.Msg_desc)
+                            </td>
+                            <td style="text-align: left">
+                                @Html.DisplayFor(modelItem => item.Api_url)
+                            </td>
+                            <td style="text-align: left">
+                                @Html.DisplayFor(modelItem => item.Sms_no)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- Page specific script -->
+<script>
+    $(function () {
+        $('#reportedDataTable').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": false,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
